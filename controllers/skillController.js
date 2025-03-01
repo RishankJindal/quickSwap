@@ -5,7 +5,7 @@ import Skill from "../models/skill_model.js";
 export const createSkill = asyncHandler(async (req, res) => {
     try {
         const { name, category } = req.body;
-        const userID = req.user.id; 
+        const userID = req.user._id; 
 
         if (!name || !category) {
             return res.status(400).json({ message: "Name and category are required" });
