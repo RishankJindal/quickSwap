@@ -46,7 +46,7 @@ export const Navbar = () => {
       {/* Mobile Navigation */}
       {menuOpen && (
         <div className="absolute top-20 left-0 w-full bg-gray-800 flex flex-col items-center py-4 space-y-4 md:hidden">
-          {["Home", "Skills", "Contact", "About"].map((link) => (
+          {["Home", "Skills", "Contact","OfferSkill", "About"].map((link) => (
             <NavLink
               key={link}
               to={link === "Home" ? "/" : `/${link.toLowerCase()}`} 
