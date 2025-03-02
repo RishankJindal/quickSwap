@@ -18,7 +18,7 @@ export const Navbar = () => {
       </h2>
 
       <div className="hidden md:flex space-x-8">
-        {["Home", "Skills", "Contact", "About"].map((link) => (
+        {["Home", "Skills", "Contact", "OfferSkill","About"].map((link) => (
           <NavLink
             key={link}
             to={link === "Home" ? "/" : `/${link.toLowerCase()}`} // ✅ Fixed this
