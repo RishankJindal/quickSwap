@@ -27,7 +27,7 @@ app.use("/api/users", usersRouter);
 app.use("/api/skill-swaps", skillSwapRouter);
 app.use("/api/skills", skillRouter);
 
-app.use('/api/admin',adminRouter)
+app.use('/api/admin', adminRouter)
 
 
 app.listen(PORT, () => {

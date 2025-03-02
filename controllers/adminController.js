@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Admin from "../models/admin_model.js";
+import User from "../models/user_model.js";
 
 // ✅ Generate JWT Token
 const generateToken = (id) => {
@@ -103,43 +104,31 @@ export const getAllUsers = asyncHandler(async (req, res) => {
     }
 });
 
-// ✅ Update User Profile
+// ✅ Update User (Admin Only)
 export const updateUser = asyncHandler(async (req, res) => {
-    try {
-        const user = await User.findById(req.user.id);
+    const { id } = req.params; // Get user ID from URL
+    const { name, email, phone, gender, address, isPremium } = req.body; // Fields to update
 
+    try {
+        const user = await User.findById(id);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        // Update fields only if they are provided in the request
-        user.name = req.body.name || user.name;
-        user.email = req.body.email || user.email;
-        user.phone = req.body.phone || user.phone;
-        user.gender = req.body.gender || user.gender;
-        user.address = req.body.address || user.address;
-        user.bio = req.body.bio || user.bio;
-        user.skillsOffered = req.body.skillsOffered || user.skillsOffered;
-        user.skillsGet = req.body.skillsGet || user.skillsGet;
+        // Update user fields if provided
+        if (name) user.name = name;
+        if (email) user.email = email;
+        if (phone) user.phone = phone;
+        if (gender) user.gender = gender;
+        if (address) user.address = address;
+        if (isPremium !== undefined) user.isPremium = isPremium;
 
-        // Save updated user data
-        const updatedUser = await user.save();
+        const updatedUser = await user.save(); // Save updated user
 
         res.status(200).json({
             message: "User updated successfully",
-            user: {
-                id: updatedUser._id,
-                name: updatedUser.name,
-                email: updatedUser.email,
-                phone: updatedUser.phone,
-                gender: updatedUser.gender,
-                address: updatedUser.address,
-                bio: updatedUser.bio,
-                skillsOffered: updatedUser.skillsOffered,
-                skillsGet: updatedUser.skillsGet
-            }
+            user: updatedUser
         });
-
     } catch (error) {
         res.status(500).json({ message: `Server Error: ${error.message}` });
     }
