@@ -1,27 +1,23 @@
 import express from "express";
-import { protect, isAdmin } from "../middlewares/protect.js";
-import User from "../models/user_model.js";
+import { protect } from "../middlewares/authMiddleware.js";
+import { 
+    registerAdmin, 
+    loginAdmin, 
+    getAdminProfile, 
+    updateAdminProfile, 
+    deleteAdmin ,
+    getAllUsers,
+    updateUser
+} from "../controllers/adminController.js";
 
-const router = express.Router();
+const adminRouter = express.Router();
 
-// Get all users (Admin Only)
-router.get("/users", protect, isAdmin, async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (err) {
-    res.status(500).json({ message: "Server Error" });
-  }
-});
+adminRouter.post("/register", registerAdmin);
+adminRouter.post("/login", loginAdmin);
+adminRouter.get("/profile", protect, getAdminProfile);
+adminRouter.put("/profile", protect, updateAdminProfile);
+adminRouter.delete("/:id", protect, deleteAdmin);
+adminRouter.get("/users", protect, getAllUsers);
+adminRouter.put("/users", protect, updateUser);
 
-// Delete a user (Admin Only)
-router.delete("/users/:id", protect, isAdmin, async (req, res) => {
-  try {
-    await User.findByIdAndDelete(req.params.id);
-    res.json({ message: "User deleted successfully" });
-  } catch (err) {
-    res.status(500).json({ message: "Error deleting user" });
-  }
-});
-
-export default router;
+export default adminRouter;

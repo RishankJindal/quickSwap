@@ -19,11 +19,7 @@ function App() {
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/offerskill" element={<OfferSkill />} />
       
-      {/* Protected Admin Route */}
-      <Route
-        path="/admin"
-        element={isAdmin() ? <AdminDashboard /> : <Navigate to="/login" />}
-      />
+      
       
     </Routes>
   );

@@ -5,8 +5,7 @@ import { connectDB } from './config/database.js'
 import usersRouter from './routes/userRoutes.js';
 import skillSwapRouter from './routes/skillSwapRoutes.js';
 import skillRouter from './routes/skillRoutes.js';
-import { protect } from './middlewares/authMiddleware.js';
-import dashboardRouter from './routes/dashboardRoutes.js';
+import adminRouter from './routes/adminRoutes.js';
 
 
 // Connect MongoDB
@@ -28,7 +27,7 @@ app.use("/api/users", usersRouter);
 app.use("/api/skill-swaps", skillSwapRouter);
 app.use("/api/skills", skillRouter);
 
-// app.use('/api/admin',adminRouter)
+app.use('/api/admin',adminRouter)
 
 
 app.listen(PORT, () => {
