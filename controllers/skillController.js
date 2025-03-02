@@ -4,7 +4,7 @@ import Skill from "../models/skill_model.js";
 // ✅ Create a New Skill
 export const createSkill = asyncHandler(async (req, res) => {
     try {
-        const { name, category } = req.body;
+        const { name, category, description } = req.body; // Added description
         const userID = req.user._id; 
 
         if (!name || !category) {
@@ -17,11 +17,12 @@ export const createSkill = asyncHandler(async (req, res) => {
             return res.status(400).json({ message: "Skill already exists" });
         }
 
-        // Create new skill
+        // Create new skill with optional description
         const skill = await Skill.create({ 
             name, 
             category, 
-            offeredBy: userID // Reference to user who created the skill
+            description: description || "", // Default to empty string if not provided
+            offeredBy: userID
         });
 
         res.status(201).json({ 
@@ -33,6 +34,7 @@ export const createSkill = asyncHandler(async (req, res) => {
         res.status(500).json({ message: `Server Error: ${error.message}` });
     }
 });
+
 
 // ✅ Get All Skills
 export const getAllSkills = asyncHandler(async (req, res) => {
