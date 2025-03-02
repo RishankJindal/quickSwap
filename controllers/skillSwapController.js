@@ -3,7 +3,7 @@ import SkillSwap from "../models/skill_swap_model.js";
 
 // ✅ Create a Skill Swap Request
 export const requestSkillSwap = asyncHandler(async (req, res) => {
-    const { receiver, skillOffered, skillWanted, totalSessions } = req.body;
+    const { skillOffered, skillWanted, totalSessions } = req.body;
     const swap = await SkillSwap.create({
         requester: req.user._id,
         receiver,
