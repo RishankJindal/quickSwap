@@ -11,7 +11,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="w-full h-20 bg-gray-900 flex items-center justify-between px-6 md:px-12 border-b-2 border-b-white">
+    <nav className="w-full h-20 bg-gray-900 flex items-center sticky top-0 justify-between px-6 md:px-12 border-b-2 border-b-white">
       {/* Logo */}
       <h2 className="text-white font-bold text-3xl md:text-4xl">
         <span className="text-[#ffe01a]">Quick</span>Swap

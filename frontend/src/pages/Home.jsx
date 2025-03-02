@@ -1,12 +1,12 @@
 import Footer from "../components/Footer";
-import { Navbar } from "../components/Navbar";
+// import { Navbar } from "../components/Navbar";
 import ContentImg from "../assets/image1.gif";
 
 const Home = () => {
   return (
     <>
       <div className="w-full min-h-screen bg-gray-900 text-white flex flex-col">
-        <Navbar />
+        {/* <Navbar /> */}
 
         {/* Main Content */}
         <div className="flex flex-col-reverse md:flex-row items-center justify-between px-4 sm:px-6 md:px-12 lg:px-24 py-10 flex-grow">

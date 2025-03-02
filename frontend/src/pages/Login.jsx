@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -7,6 +7,15 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    useEffect(()=>{
+      fetch('http://localhost:3000/api/users/login',{
+        method:'POST',
+        body:{
+          
+        }
+      })
+    },[])
     
     // Retrieve stored user data
     const storedUser = JSON.parse(localStorage.getItem("user"));

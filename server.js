@@ -6,6 +6,8 @@ import usersRouter from './routes/userRoutes.js';
 import skillSwapRouter from './routes/skillSwapRoutes.js';
 import skillRouter from './routes/skillRoutes.js';
 import adminRouter from './routes/adminRoutes.js';
+import { verifyToken } from './utils/verifyToken.js';
+import { checkToken } from './controllers/verifyTokenController.js';
 
 
 // Connect MongoDB
@@ -28,6 +30,7 @@ app.use("/api/skill-swaps", skillSwapRouter);
 app.use("/api/skills", skillRouter);
 
 app.use('/api/admin', adminRouter)
+app.get('/api/verifyToken/:token',checkToken)
 
 
 app.listen(PORT, () => {
