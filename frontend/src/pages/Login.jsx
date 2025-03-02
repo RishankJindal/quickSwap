@@ -33,25 +33,25 @@ const Login = () => {
           <input
             type="email"
             placeholder="Email"
-            className="w-full p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
             required
           />
           <input
             type="password"
             placeholder="Password"
-            className="w-full p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
             required
           />
           <button 
             type="submit" 
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-md transition-all">
+            className="w-full bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-3 px-4 rounded-md transition-all">
             Login
           </button>
         </form>
         <p className="text-gray-400 text-center mt-4">
-          Don't have an account? <a href="/signup" className="text-purple-500">Sign up</a>
+          Don't have an account? <a href="/signup" className="text-yellow-400">Sign up</a>
         </p>
       </div>
     </div>
