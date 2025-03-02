@@ -4,9 +4,9 @@ import Signup from "./pages/Signup"
 import Home from "./pages/Home";
 import "./index.css";
 import Skills from "./components/Skills";
-import Contact from "./components/Contact";
 import { ProfilePage } from "./components/ProfilePage";
 import OfferSkill from "./components/OfferSkills";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -18,6 +18,13 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/offerskill" element={<OfferSkill />} />
+      
+      {/* Protected Admin Route */}
+      <Route
+        path="/admin"
+        element={isAdmin() ? <AdminDashboard /> : <Navigate to="/login" />}
+      />
+      
     </Routes>
   );
 }

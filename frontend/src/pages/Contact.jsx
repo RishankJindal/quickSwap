@@ -1,6 +1,6 @@
 import React from "react";
-import ContactSection from "./ContactSection";
-import { Navbar } from "./Navbar";
+import { Navbar } from "../components/Navbar";
+import ContactSection from "../components/ContactSection";
 
 const Contact = () => {
 
