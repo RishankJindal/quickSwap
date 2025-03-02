@@ -7,6 +7,7 @@ import Skills from "./components/Skills";
 import { ProfilePage } from "./components/ProfilePage";
 import OfferSkill from "./components/OfferSkills";
 import Contact from "./pages/Contact";
+import AdminSignup from "./pages/AdminSignup";
 
 function App() {
   return (
@@ -18,9 +19,7 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/offerskill" element={<OfferSkill />} />
-      
-      
-      
+      <Route path="/admin-signup" element={<AdminSignup />} />
     </Routes>
   );
 }
